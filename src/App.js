@@ -6,28 +6,38 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons : [
-      { name: 'One', age: 1 },
-      { name: 'Two', age: 2 },
-      { name: 'Three', age: 3 },
+      { id:'154sd', name: 'One', age: 1 },
+      { id:'1gree', name: 'Two', age: 2 },
+      { id:'19iuj', name: 'Three', age: 3 },
     ],
     showPersons: false
   }
 
 
-  nameChangeHandler = (e) => {
-    this.setState({
-      persons : [
-        { name: e.target.value, age: 1 },
-        { name: 'Two', age: 2 },
-        { name: 'Three', age: 3000 },
-      ]
-    })
+  nameChangedHandler = (e, id) => {
+
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+
+    const person =  {
+      ...this.state.persons[personIndex]
+    }
+
+    person.name= e.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({ persons: persons });
   }
+
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow});
   }
+
 
   deletePersonHandler = (personIndex) => {
     // const persons = this.state.persons.slice();
@@ -50,6 +60,8 @@ class App extends Component {
               click={() => this.deletePersonHandler(index)} 
               name={person.name} 
               age={person.age} 
+              key={person.id}
+              changed={(e) => this.nameChangedHandler(e, person.id)}
             />
           })}
         </div> 

@@ -11,10 +11,10 @@ const person = (props) => {
 
     return (
         <div style={style}>
+            <input type="text" onChange={props.changed} value={props.name}/>
             <p>I am {props.name} and {props.age} years old.</p>
             <button onClick={props.click}>Delete Person</button>
             <p>{props.children}</p>
-            <input type="text" onChange={props.changed} value={props.name}/>
         </div>
     )
 };
