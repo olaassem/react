@@ -2,7 +2,6 @@ import React from 'react';
 
 const person = (props) => {
     const style = {
-        backgroundColor: 'lightblue',
         border: '2px black solid',
         width: '50%',
         margin: '10px auto',
