@@ -1,21 +1,25 @@
 import React from 'react';
-import Radium from 'radium';
+import './Person.css';
+import styled from 'styled-components';
 
+
+const StyledDiv = styled.div `
+    width: 60%;
+    margin: 16px auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+    text-align: center;
+
+    @media (min-width: 500px): {
+        width: '450px'
+`
 
 const person = (props) => {
-    const style = {
-        border: '2px black solid',
-        width: '50%',
-        margin: '10px auto',
-        padding: '20px',
 
-        '@media (min-width: 500px)': {
-            width: '450px'
-        }
-    }
 
     return (
-        <div style={style}>
+        <StyledDiv>
             <input 
                 type="text" 
                 onChange={props.changed} 
@@ -24,8 +28,8 @@ const person = (props) => {
             <p>I am {props.name} and {props.age} years old.</p>
             <button onClick={props.click}>Delete Person</button>
             <p>{props.children}</p>
-        </div>
+        </StyledDiv>
     )
 };
 
-export default Radium(person);
+export default person;
