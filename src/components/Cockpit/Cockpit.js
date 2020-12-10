@@ -23,7 +23,6 @@ const cockpit = (props) => {
             <button 
                 className={btnClass}
                 onClick={props.clicked}
-                alt={props.showPersons}
             >
                 Toggle Persons
             </button>
@@ -32,3 +31,5 @@ const cockpit = (props) => {
 };
 
 export default cockpit;
+
+// alt={props.showPersons}
