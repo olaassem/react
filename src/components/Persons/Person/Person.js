@@ -8,17 +8,16 @@ class Person extends Component {
     
         console.log('[Person.js] rendering...');
 
-        return (
-            <div className={classes.Person}>
-                <input 
-                    type="text" 
-                    onChange={this.props.changed} 
-                    value={this.props.name} />
-                <p>I am {this.props.name} and {this.props.age} years old.</p>
-                <button onClick={this.props.click}>Delete Person</button>
-                <p>{this.props.children}</p>
-            </div>
-        )
+        return [
+            <input 
+                key="i1"
+                type="text" 
+                onChange={this.props.changed} 
+                value={this.props.name} />,
+            <p key="i2">I am {this.props.name} and {this.props.age} years old.</p>,
+            <button key="i3" onClick={this.props.click}>Delete Person</button>,
+            <p key="i4">{this.props.children}</p>
+        ]
     }
 };
 
