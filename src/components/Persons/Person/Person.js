@@ -8,14 +8,18 @@ import classes from './Person.css';
 
 
 class Person extends Component {
-    render() {
+    componentDidMount() {
+        this.inputElement.focus();
+    }
     
+    render() {
         console.log('[Person.js] rendering...');
 
         return (
             <Aux>
                 <input 
                     key="i1"
+                    ref={(inputEl) => {this.inputElement = inputEl}}
                     type="text" 
                     onChange={this.props.changed} 
                     value={this.props.name} />
