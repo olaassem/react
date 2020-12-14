@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Aux from '../../../hoc/Aux';
 import withClass from '../../../hoc/withClass';
+import AuthContext from '../../../context/auth-context';
 
 import classes from './Person.css';
 
@@ -23,7 +24,10 @@ class Person extends Component {
 
         return (
             <Aux>
-                {this.props.isAuth ? <p>Is Authenticated</p> : <p>Please Log In</p>}
+                <AuthContext.Consumer>
+                    {(context) => context.authenticated ? <p>Is Authenticated</p> : <p>Please Log In</p>}
+                </AuthContext.Consumer>
+
                 <input 
                     key="i1"
                     // ref={(inputEl) => {this.inputElement = inputEl}}
