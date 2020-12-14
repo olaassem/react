@@ -23,6 +23,7 @@ class Person extends Component {
 
         return (
             <Aux>
+                {this.props.isAuth ? <p>Is Authenticated</p> : <p>Please Log In</p>}
                 <input 
                     key="i1"
                     // ref={(inputEl) => {this.inputElement = inputEl}}

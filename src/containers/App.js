@@ -19,7 +19,8 @@ class App extends Component {
       { id:'19iuj', name: 'Three', age: 3 },
     ],
     showPersons: false,
-    changeCounter: 0
+    changeCounter: 0,
+    authenticated: false
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -64,6 +65,11 @@ class App extends Component {
   }
 
 
+  loginHandler = () => {
+    this.setState({authenticated: true});
+  }
+
+
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow});
@@ -85,9 +91,11 @@ class App extends Component {
 
     if(this.state.showPersons) {
       persons = <Persons 
-          persons={this.state.persons}
-          clicked={this.deletePersonHandler}
-          changed={this.nameChangedHandler}/>
+        persons={this.state.persons}
+        clicked={this.deletePersonHandler}
+        changed={this.nameChangedHandler}
+        isAuthenticated={this.state.authenticated}
+      />
     };
 
     return (
@@ -96,7 +104,8 @@ class App extends Component {
           title={this.props.appTitle} 
           showPersons={this.state.showPersons}
           personsLength={this.state.persons.length}
-          clicked={this.togglePersonsHandler}/>
+          clicked={this.togglePersonsHandler}
+          login={this.loginHandler}/>
         {persons}
         </Aux>
     );
